@@ -30,6 +30,7 @@ public interface JugadorService {
     @DELETE("/jugadores/{id}")
     Call<Void> deleteJugador(@Path("id") Long id);
 
+    //Borrar esta query por ambiguedad --> misma accion para el servidor
     @GET("/jugadores/{canastas}")
     Call<List<Jugador>> findAllJugadoresCanastas();
 

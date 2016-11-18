@@ -32,6 +32,7 @@ public class MainJugadorManager implements JugadorCallback {
         //Invocamos al metodo crearJugador del JugadorManager (encapsula la funcionalidad ofrecida por retrofit)
         //La referencia this es la instancia de la clase MainJugadorManager que implementa JugadorCallback
         jugadorManager.crearJugador(jugador, this);
+        //jugadorManager.deleteJugador(jugador.getId(), this);
 
         jugadorManager.getAllJugadores(this);
 
