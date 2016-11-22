@@ -6,7 +6,7 @@ import retrofit2.Response;
 import java.util.List;
 
 /**
- * Created by 46419674Q on 17/11/2016.
+ * Created by Navy on 17/11/2016.
  */
 public class MainJugadorManager implements JugadorCallback {
 
@@ -27,7 +27,11 @@ public class MainJugadorManager implements JugadorCallback {
         //Creación de un nuevo Jugador
         Jugador jugador = new Jugador();
         jugador.setNombre("retrofit");
-        jugador.setCanastas(150);
+        jugador.setCanastas(15);
+        jugador.setAsistencias(12);
+        jugador.setRebotes(2);
+        jugador.setPosicion(Posicion.Alero);
+
 
         //Invocamos al metodo crearJugador del JugadorManager (encapsula la funcionalidad ofrecida por retrofit)
         //La referencia this es la instancia de la clase MainJugadorManager que implementa JugadorCallback

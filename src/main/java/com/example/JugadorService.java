@@ -30,9 +30,8 @@ public interface JugadorService {
     @DELETE("/jugadores/{id}")
     Call<Void> deleteJugador(@Path("id") Long id);
 
-    //Borrar esta query por ambiguedad --> misma accion para el servidor
-    @GET("/jugadores/{canastas}")
-    Call<List<Jugador>> findAllJugadoresCanastas();
+    @GET("/jugadores/bycanastas")
+    Call<List<Jugador>> OrderByJugadoresCanastas();
 
     @GET("/jugadores/byCanastas/{canastas}")
     Call<List<Jugador>> findByCanastasGreaterThanEqual(@Path("canastas") int canastas);
@@ -45,6 +44,4 @@ public interface JugadorService {
 
     @GET("/jugadores/byPosicionAllJugadores")
     Call<Map<Posicion, Collection<Jugador>>> findByAllPosiciones();
-
-
 }
