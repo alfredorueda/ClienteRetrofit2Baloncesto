@@ -40,8 +40,6 @@ public class MainJugadorManager implements JugadorCallback {
 
         jugadorManager.getAllJugadores(this);
 
-
-
     }
 
 

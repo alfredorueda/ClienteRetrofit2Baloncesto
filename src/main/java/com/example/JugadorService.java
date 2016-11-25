@@ -30,8 +30,8 @@ public interface JugadorService {
     @DELETE("/jugadores/{id}")
     Call<Void> deleteJugador(@Path("id") Long id);
 
-    @GET("/jugadores/bycanastas")
-    Call<List<Jugador>> OrderByJugadoresCanastas();
+    @GET("/jugadores/orderByCanastas")
+    Call<List<Jugador>> orderByJugadoresCanastas();
 
     @GET("/jugadores/byCanastas/{canastas}")
     Call<List<Jugador>> findByCanastasGreaterThanEqual(@Path("canastas") int canastas);

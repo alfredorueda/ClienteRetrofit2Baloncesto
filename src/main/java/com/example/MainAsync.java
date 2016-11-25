@@ -114,7 +114,7 @@ public class MainAsync {
         });
 
         //Hacemos un GET para obtener todos los jugadores ordenados por canastas
-        Call<List<Jugador>> callJugadoresCanastas = jugadorService.OrderByJugadoresCanastas();
+        Call<List<Jugador>> callJugadoresCanastas = jugadorService.orderByJugadoresCanastas();
         callJugadoresCanastas.enqueue(new Callback<List<Jugador>>() {
             @Override
             public void onResponse(Call<List<Jugador>> call, Response<List<Jugador>> response) {

@@ -90,11 +90,11 @@ public class MainSync {
 
         if(responseJugador.isSuccessful()) {
             System.out.println("GET de 1 Jugador->Status code: " + responseJugador.code() +
-                    " Jugador: " + responseJugador.body() );
+                    " Jugador: " + responseJugador.body());
         }
 
         //Hacemos un GET para obtener todos los jugadores ordenados por canastas
-        Call<List<Jugador>> callJugadoresAllCanastas = jugadorService.OrderByJugadoresCanastas();
+        Call<List<Jugador>> callJugadoresAllCanastas = jugadorService.orderByJugadoresCanastas();
         Response<List<Jugador>> responseAllCanastas = callJugadoresAllCanastas.execute();
 
         if (responseAllCanastas.isSuccessful()) {
@@ -109,9 +109,11 @@ public class MainSync {
         callJugadoresAllCanastas = jugadorService.getError();
         response = callJugadoresAllCanastas.execute();
 
+        //va a entrar seguro en el if, porque el servidor no contiene un mapping para la url jugadoresError
+        //error forzado para ver que pasa, cuando se hacen peticiones que el servidor no puede responder
         if(!response.isSuccessful()) {
             System.out.println("Status code: " + response.code() +
-                    " Mensaje de error: " + response.raw() );
+                    " Mensaje de error: " + response.raw());
         }
 
         //Hacemos un GET para obtener todos los jugadores a partir de un rango de canastas
@@ -119,7 +121,7 @@ public class MainSync {
         Response<List<Jugador>> responseCanastas = callJugadoresCanastas.execute();
 
         if (responseCanastas.isSuccessful()) {
-            List<Jugador> jugadorList = response.body();
+            List<Jugador> jugadorList = responseCanastas.body();
             System.out.println("Status code: " + responseCanastas.code() + System.lineSeparator() +
                     "GET all jugadores por un rango de canastas: " + jugadorList);
         } else {
@@ -132,7 +134,7 @@ public class MainSync {
 
         if(!response.isSuccessful()) {
             System.out.println("Status code: " + response.code() +
-                    " Mensaje de error: " + response.raw() );
+                    " Mensaje de error: " + response.raw());
         }
 
         //Hacemos un GET para obtener todos los jugadores a partir de un minimo y maximo de canatas
@@ -140,7 +142,7 @@ public class MainSync {
         Response<List<Jugador>> responseCanastasMinMax = callJugadoresCanastasMinMax.execute();
 
         if (responseCanastasMinMax.isSuccessful()) {
-            List<Jugador> jugadorList = response.body();
+            List<Jugador> jugadorList = responseCanastasMinMax.body();
             System.out.println("Status code: " + responseCanastasMinMax.code() + System.lineSeparator() +
                     "GET all jugadores por un minimo y maximo de canastas: " + jugadorList);
         } else {
@@ -169,14 +171,6 @@ public class MainSync {
                     "Mensaje error: " + responseJugadoresMedia.errorBody());
         }
 
-        /*callJugadoresMedia = jugadorService.getError();
-        response = callJugadoresMedia.execute();
-
-        if(!response.isSuccessful()) {
-            System.out.println("Status code: " + response.code() +
-                    " Mensaje de error: " + response.raw() );
-        }*/
-
         //Hacemos un GET para obtener todos los jugadores por posicion y con sus estadisticas
         Call<Map<Posicion ,Collection<Jugador>>> callJugadoresPosicionMedia = jugadorService.findByAllPosiciones();
         Response<Map<Posicion, Collection<Jugador>>> responseJugadoresPosicionMedia = callJugadoresPosicionMedia.execute();
@@ -189,14 +183,5 @@ public class MainSync {
             System.out.println("Status code: " + responseJugadoresPosicionMedia.code() +
                     "Mensaje error: " + responseJugadoresPosicionMedia.errorBody());
         }
-
-        /*callJugadoresPosicionMedia = jugadorService.getError();
-        responseJugadoresPosicionMedia = callJugadoresPosicionMedia.execute();
-
-        if(!response.isSuccessful()) {
-            System.out.println("Status code: " + responseJugadoresPosicionMedia.code() +
-                    " Mensaje de error: " + responseJugadoresPosicionMedia.raw() );
-        }*/
-
     }
 }
