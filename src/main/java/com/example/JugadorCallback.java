@@ -7,6 +7,8 @@ import java.util.List;
  */
 public interface JugadorCallback {
 
+    void onSuccess();
+
     void onSuccess(List<Jugador> jugadorList);
 
     void onSuccess(Jugador jugador);

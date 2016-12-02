@@ -94,15 +94,15 @@ public class JugadorManager {
         });
     }
 
-    public synchronized void deleteJugador(Jugador jugador, final JugadorCallback jugadorCallback){
-        Call<Void> callDeleteJugador = jugadorService.deleteJugador(1L);
+    public synchronized void deleteJugador(Long id, final JugadorCallback jugadorCallback){
+        Call<Void> callDeleteJugador = jugadorService.deleteJugador(id);
         callDeleteJugador.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 int codigo = response.code();
 
                 if(response.isSuccessful()){
-                    jugadorCallback.onSuccess(jugador);
+                    jugadorCallback.onSuccess();
                 }else{
                     jugadorCallback.onFailure(new Throwable("ERROR al borrar el jugador" + codigo + response.raw().message()));
                 }
