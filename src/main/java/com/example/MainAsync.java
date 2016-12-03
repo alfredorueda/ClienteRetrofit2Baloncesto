@@ -79,6 +79,7 @@ public class MainAsync {
             }
         });
 
+        // TODO: Sleep Thread 5 secs!!
         //Hacemos un PUT para actualizar el jugador creado anteriormente
         //Modificamos unos campos del jugador creado anteriormente
         nuevoJugador.setNombre("Modificado");
